@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landlord and Tenant Matter Intake Form</title>
+
+<style>
+    /* Styles */
+</style>
+</head>
+<body>
+<div class="container">
+    <div>
+        <img src="https://jr-landlordtenantparalegal.ca/images/logo.png" alt="Your Law Firm Logo" style="max-width: 200px;">
+    </div>
+    <h2>Landlord and Tenant Matter Intake Form</h2>
+    <form action="submit_form.php" method="POST">
+        <!-- Your Information -->
+        <h3>Your Information:</h3>
+        <label for="your_name">Your Full Name:</label><br>
+        <input type="text" id="your_name" name="your_name" required><br>
+
+        <label for="your_email">Your Email:</label><br>
+        <input type="email" id="your_email" name="your_email" required><br>
+
+        <label for="your_phone">Your Phone Number:</label><br>
+        <input type="tel" id="your_phone" name="your_phone" required><br>
+
+        <!-- Tenants Information -->
+        <h3>Tenants Information:</h3>
+        <div id="tenant_info">
+            <!-- Tenant 1 -->
+            <label for="tenant1_name">Tenant Full Name:</label><br>
+            <input type="text" id="tenant1_name" name="tenant1_name" required><br>
+
+            <label for="tenant1_email">Tenant Email:</label><br>
+            <input type="email" id="tenant1_email" name="tenant1_email" required><br>
+        </div>
+        <button type="button" onclick="addTenant()">Add Another Tenant</button><br>
+
+        <!-- Landlords Information -->
+        <h3>Landlords Information:</h3>
+        <div id="landlord_info">
+            <!-- Landlord 1 -->
+            <label for="landlord1_name">Landlord Full Name:</label><br>
+            <input type="text" id="landlord1_name" name="landlord1_name" required><br>
+
+            <label for="landlord1_email">Landlord Email:</label><br>
+            <input type="email" id="landlord1_email" name="landlord1_email" required><br>
+        </div>
+        <button type="button" onclick="addLandlord()">Add Another Landlord</button><br>
+
+        <!-- Lease Information -->
+        <h3>Lease Information:</h3>
+
+         <label for="Address of the rental home">Address of the rental home:</label><br>
+        <input type="text" id="Address of the rental home" name="Address of the rental home" required><br>
+
+        <label for="rent_amount">Rent Amount:</label><br>
+        <input type="text" id="rent_amount" name="rent_amount" required><br>
+
+
+        <label for="rent_due_date">Rent Due Date:</label><br>
+        <input type="date" id="rent_due_date" name="rent_due_date" required><br>
+
+        <label for="lease_start_date">Lease Start Date:</label><br>
+        <input type="date" id="lease_start_date" name="lease_start_date" required><br>
+
+        <label for="lease_type">Lease Type:</label><br>
+        <select id="lease_type" name="lease_type" required>
+            <option value="">Select Lease Type</option>
+            <option value="Fixed Term">Fixed Term</option>
+            <option value="Month to Month">Month to Month</option>
+        </select><br>
+
+        <!-- Reason for Legal Services -->
+        <h3>Reason for Legal Services:</h3>
+        <label for="legal_service_reason">Select reason:</label><br>
+        <select id="legal_service_reason" name="legal_service_reason" required>
+            <option value="">Select Reason</option>
+            <option value="Tenant is in arrears">Tenant owes me rent money</option>
+            <option value="I or a family member want to move into the unit for personal use">I or a family member want to move into the unit for personal use </option>
+            <option value="Landlord has interfered with reasonable enjoyment of the unit">Landlord has interfered with reasonable enjoyment of the unit</option>
+            <option value="I want to end my lease agreement with my landlord">I want to end my lease agreement with my landlord</option>
+	<option value="Harassment or Interference with Quiet Enjoyment">Harassment or Interference with Quiet Enjoyment</option>
+<option value="Subletting and Assignment">Subletting and Assignment</option>
+<option value="Landlord has evicted or is trying to evict me in bad faith">Landlord has evicted or is trying to evict me in bad faith</option>
+            <!-- Add more options as needed -->
+        </select><br>
+
+        <!-- Additional Information -->
+        <label for="additional_info">Additional Information:</label><br>
+        <textarea id="additional_info" name="additional_info" rows="4" cols="50"></textarea><br>
+<label for="If you have any questions dont hesitate to contact us at 1-866-764-0849">If you have any questions dont hesitate to contact us at 1-866-764-0849. Thank you.</label><br>
+        <!-- Submit Button -->
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<script>
+    // Function to add another tenant field
+    function addTenant() {
+        var tenantInfo = document.getElementById('tenant_info');
+        var tenantCount = tenantInfo.children.length / 2; // Divide by 2 to count each label and input
+        var newTenantHtml = `
+            <label for="tenant${tenantCount + 1}_name">Tenant ${tenantCount + 1} Full Name:</label><br>
+            <input type="text" id="tenant${tenantCount + 1}_name" name="tenant${tenantCount + 1}_name" required><br>
+            <label for="tenant${tenantCount + 1}_email">Tenant ${tenantCount + 1} Email:</label><br>
+            <input type="email" id="tenant${tenantCount + 1}_email" name="tenant${tenantCount + 1}_email" required><br>
+        `;
+        tenantInfo.insertAdjacentHTML('beforeend', newTenantHtml);
+    }
+
+    // Function to add another landlord field
+    function addLandlord() {
+        var landlordInfo = document.getElementById('landlord_info');
+        var landlordCount = landlordInfo.children.length / 2; // Divide by 2 to count each label and input
+        var newLandlordHtml = `
+            <label for="landlord${landlordCount + 1}_name">Landlord ${landlordCount + 1} Full Name:</label><br>
+            <input type="text" id="landlord${landlordCount + 1}_name" name="landlord${landlordCount + 1}_name" required><br>
+            <label for="landlord${landlordCount + 1}_email">Landlord ${landlordCount + 1} Email:</label><br>
+            <input type="email" id="landlord${landlordCount + 1}_email" name="landlord${landlordCount + 1}_email" required><br>
+        `;
+        landlordInfo.insertAdjacentHTML('beforeend', newLandlordHtml);
+    }
+</script>
+</body>
+</html>
